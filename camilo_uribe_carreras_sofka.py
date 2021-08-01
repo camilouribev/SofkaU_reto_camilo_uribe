@@ -3,7 +3,11 @@
 
 import os
 import json
-from tabulate import tabulate
+try:
+    from tabulate import tabulate
+except ImportError:
+    print("""Por favor instala el paquete "tabulate" para presentar los resultados:  pip install tabulate""")
+    quit()
 import random
 
 #La clase carrera recibe el número de jugadores,
@@ -107,7 +111,7 @@ class Carro():
      |   o   |o/ \o   /o    /
      |     o |/   \ o/  o  /
      '-------'     \/____o/""")
-        tirar_dados = input("{}: presiona enter para tirar los dados, buena suerte!!! ".format(self.piloto))
+        tirar_dados = input("{}: presiona enter para tirar el dado, buena suerte!!! ".format(self.piloto))
         self.avance_turno = random.randint(1, 6)*100
         self.distancia_recorrida += self.avance_turno       
         self.porcentaje_avance = round(self.distancia_recorrida*100/nueva_carrera.pista.longitud, 1)
